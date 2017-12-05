@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { FormGroup, Input, FormFeedback, Label } from 'reactstrap';
 import deepEqual from 'deep-equal';
 
-import { validate } from '../services/Validate';
+import validateField from '../../services/validateField';
 
 const propTypes = {
     defaultValue: PropTypes.string,
@@ -16,10 +14,10 @@ const propTypes = {
     submitted: PropTypes.bool, // whether the user has attempt to submit the form 
     type: PropTypes.string,
     validations: PropTypes.object,
+    validatorMap: PropTypes.object,
 };
 
 const defaultProps = {
-    defaultValue: '',
     inputClassName: '',
     label: '',
     onChange: () => { },
@@ -27,18 +25,18 @@ const defaultProps = {
     submitted: false,
     type: 'text',
     validations: {},
+    validatorMap: {},
 };
 
-class Field extends Component {
+class AutomateField extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            val: null,
+            val: this.props.defaultValue ? this.props.defaultValue : null,
             valid: null,
             validations: Object.assign({}, this.props.validations),
             dirty: false,
             blurred: false,
-            value: this.props.defaultValue,
             isRequired: Object.keys(this.props.validations).indexOf('required') >= 0,
         };
         this.onChange = this.onChange.bind(this);
@@ -68,33 +66,37 @@ class Field extends Component {
     }
     validate() {
         var self = this;
-        return validate(this.state.val, this.state.validations)
+        return validateField(this.state.val, this.state.validations, this.props.validatorMap)
             .then(results => {
                 self.setState({
                     validations: Object.assign({}, this.state.validations, results.validations),
                     valid: results.valid,
                     dirty: (!this.state.dirty && self.state.val && self.state.val.length > 0)
+                }, ()=> {
+                    if (typeof self.props.onChange === 'function') {
+                        self.props.onChange(self.props.fieldName, self.state.val, results.valid, results.formData);
+                    }
                 });
-                if (typeof self.props.onChange === 'function') {
-                    self.props.onChange(self.props.fieldName, self.state.val, results.valid, results.formData);
-                }
                 return results.valid;
             });
     }
-    onChange(e, track) {
+    onChange(e, forceValidate) {
         const val = (this.props.type === 'checkbox') ?
-            (e.target.checked ? 'Y' : '') :
+            (e.target.checked ? 'Y' : false) :
             e.target.value;
-        if (this.state.val !== val) {
-            this.state.val = val;
-        }
-        if (track === true && (this.state.blurred === true || this.props.submitted === true)) {
-            this.validate();
-        }
+        const self = this;
+        this.setState({ 'val' : val }, () => {
+            self.props.onChange(self.props.fieldName, self.state.val);
+            if (forceValidate || self.state.blurred === true || self.props.submitted === true) {
+                self.validate();
+            }
+        });
     }
     onBlur(e) {
         if (!this.state.blurred) {
-            this.state.blurred = true;
+            this.setState({
+                blurred: true,
+            });
         }
         this.onChange(e, true);
     }
@@ -116,7 +118,7 @@ class Field extends Component {
     }
 }
 
-Field.propTypes = propTypes;
-Field.defaultProps = defaultProps;
+AutomateField.propTypes = propTypes;
+AutomateField.defaultProps = defaultProps;
 
-export default Field;
+export default AutomateField;
