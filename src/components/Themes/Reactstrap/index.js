@@ -3,7 +3,7 @@ import FieldInput from './FieldInput';
 import FieldSelect from './FieldSelect';
 import FieldValidationMessages from './FieldValidationMessages';
 
-const FieldRenderMap = {
+const ReactstrapTheme = {
     'input': FieldInput,
     'checkbox': FieldCheckbox,
     'select': FieldSelect,
@@ -11,7 +11,7 @@ const FieldRenderMap = {
 };
 
 export {
-    FieldRenderMap,
+    ReactstrapTheme,
     FieldCheckbox,
     FieldInput,
     FieldSelect,

@@ -5,7 +5,7 @@ import AutomateField from './AutomateField';
 const propTypes = {
     triggerSubmit: PropTypes.func,
     submitting: PropTypes.bool,
-    renderMap: PropTypes.object,
+    theme: PropTypes.object,
     data: PropTypes.array,
     validatorMap: PropTypes.object,
 }
@@ -13,7 +13,7 @@ const propTypes = {
 const defaultProps = {
     triggerSubmit: () => {},
     submitting: false,
-    renderMap: {},
+    theme: {},
     data: [],
     validatorMap: {},
 };
@@ -106,7 +106,7 @@ class AutomateForm extends PureComponent {
         );
     }
     renderField(fieldData, index) {
-        fieldData.render = this.props.renderMap[fieldData.type];
+        fieldData.render = this.props.theme[fieldData.type];
         return (
             <AutomateField
                 {...fieldData}

@@ -3,13 +3,13 @@ import AutomateForm from './AutomateForm';
 import renderer from 'react-test-renderer';
 import signupForm from '../../data/signupForm';
 import { ValidatorMap } from '../../services/validators';
-import { FieldRenderMap } from '../Fields';
+import { ReactstrapTheme } from '../Themes/Reactstrap';
 
 test('Renders signup form', () => {
     const component = renderer.create(
         <AutomateForm
             data={signupForm}
-            renderMap={FieldRenderMap}
+            theme={ReactstrapTheme}
             validatorMap={ValidatorMap}
         />
     );

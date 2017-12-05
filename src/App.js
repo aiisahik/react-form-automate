@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { AutomateForm } from './components/Automate';
-import { FieldRenderMap } from './components/Fields';
+import { ReactstrapTheme } from './components/Themes/Reactstrap';
 import { ValidatorMap } from './services/validators';
 import signupForm from './data/signupForm';
 
@@ -62,7 +62,7 @@ class App extends Component {
           <div className="col-5">
             <AutomateForm 
               data={this.state.formData}
-              renderMap={FieldRenderMap}
+              theme={ReactstrapTheme}
               validatorMap={ValidatorMap}
               triggerSubmit={click => this.clickSubmit = click}
               submit={this.submit}
