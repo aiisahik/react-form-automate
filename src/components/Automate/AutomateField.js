@@ -102,8 +102,11 @@ class AutomateField extends Component {
     }
     onKeyDown(e) {
         if (e.keyCode === 9) {
-            this.state.blurred = true;
-            this.onChange(e, true);
+            this.setState({
+                blurred: true
+            }, () => {
+                this.onChange(e, true);
+            });
         }
     }
     render() {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { FormFeedback } from 'reactstrap';
 
 const FieldValidationMessages = ({validations}) => {
     const validationFeedback = Object.keys(validations).map((type, index) => {

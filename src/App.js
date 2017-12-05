@@ -3,7 +3,6 @@ import './App.scss';
 import { AutomateForm } from './components/Automate';
 import { FieldRenderMap } from './components/Fields';
 import { ValidatorMap } from './services/validators';
-import validateField from './services/validateField';
 import signupForm from './data/signupForm';
 
 class App extends Component {

@@ -59,9 +59,11 @@ class AutomateForm extends PureComponent {
                         if (self.state.validity[fieldName] === false){
                             failedFields.push(fieldName);
                         }
+                        return null;
                     });
                     reject(null);
                 }
+                
             })
         });
     }
@@ -70,9 +72,8 @@ class AutomateForm extends PureComponent {
         const validationPromises = Object.keys(this.fields).map((fieldName) => {
             if (self.fields[fieldName] && typeof self.fields[fieldName].validate === 'function'){
                 return self.fields[fieldName].validate();
-            } else {
-                return Promise.resolve(false);;
             }
+            return Promise.resolve(false);
         });
         return new Promise((resolve, reject) => {
             Promise.all(validationPromises).then(fieldsValidity => {
