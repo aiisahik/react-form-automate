@@ -81,16 +81,18 @@ class AutomateField extends Component {
             });
     }
     onChange(e, forceValidate) {
-        const val = (this.props.type === 'checkbox') ?
-            (e.target && e.target.checked ? 'Y' : false) :
-            e.target ? e.target.value : false;
-        const self = this;
-        this.setState({ 'val' : val }, () => {
-            self.props.onChange(self.props.fieldName, self.state.val);
-            if (forceValidate || self.state.blurred === true || self.props.submitted === true) {
-                self.validate();
-            }
-        });
+        if (e.target){
+            const val = (this.props.type === 'checkbox') ?
+                (e.target && e.target.checked ? 'Y' : false) :
+                e.target ? e.target.value : false;
+            const self = this;
+            this.setState({ 'val' : val }, () => {
+                self.props.onChange(self.props.fieldName, self.state.val);
+                if (forceValidate || self.state.blurred === true || self.props.submitted === true) {
+                    self.validate();
+                }
+            });
+        }
     }
     onBlur(e) {
         if (!this.state.blurred) {
