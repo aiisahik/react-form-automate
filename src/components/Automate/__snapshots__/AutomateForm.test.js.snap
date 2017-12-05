@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders signup form 1`] = `
+<form
+  className="form"
+  noValidate={true}
+>
+  <div
+    className="form-group"
+  >
+    <label
+      className=" form-control-label"
+      htmlFor="username"
+    >
+      Email
+    </label>
+    <input
+      className="form-control"
+      defaultValue={undefined}
+      maxLength="60"
+      name="username"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder=""
+      required={undefined}
+      type="input"
+    />
+    <span />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=" form-control-label"
+      htmlFor="username"
+    >
+      Company Name
+    </label>
+    <input
+      className="form-control"
+      defaultValue={undefined}
+      maxLength="60"
+      name="companyName"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder=""
+      required={undefined}
+      type="input"
+    />
+    <span />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=" form-control-label"
+      htmlFor="username"
+    >
+      Zip Code
+    </label>
+    <input
+      className="form-control"
+      defaultValue={undefined}
+      maxLength="60"
+      name="zipcode"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      placeholder=""
+      required={undefined}
+      type="input"
+    />
+    <span />
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=" form-control-label"
+      htmlFor="username"
+    >
+      Business Size
+    </label>
+    <select
+      className="form-control"
+      defaultValue="small"
+      name="business_size"
+      onChange={[Function]}
+      required={undefined}
+    >
+      <option
+        value=""
+      >
+        
+      </option>
+      <option
+        value="small"
+      >
+        Small (fewer than 25 employees)
+      </option>
+      <option
+        value="medium"
+      >
+        Medium (25 to 100 employees)
+      </option>
+      <option
+        value="large"
+      >
+        Large (more than 100 employees)
+      </option>
+    </select>
+    <span />
+  </div>
+  <div
+    className="form-check"
+  >
+    <label
+      className="custom-control custom-checkbox form-check-label "
+      htmlFor={undefined}
+    >
+      <input
+        className="form-check-input"
+        defaultValue={undefined}
+        name="tos"
+        onChange={[Function]}
+        type="checkbox"
+        value={true}
+      />
+      <span
+        className="custom-control-indicator"
+      />
+      <div
+        className="custom-control-description mb-3"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "I accept the Kinnek <a href=\\"/terms/\\" target=\\"_blank\\"> Terms of Use</a > and <a href=\\"/privacy/\\" target=\\"_blank\\"> Privacy Policy</a>",
+          }
+        }
+      />
+      <span />
+    </label>
+  </div>
+</form>
+`;

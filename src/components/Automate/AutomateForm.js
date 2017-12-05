@@ -70,11 +70,7 @@ class AutomateForm extends PureComponent {
         const validationPromises = Object.keys(this.fields).map((fieldName) => {
             if (self.fields[fieldName] && typeof self.fields[fieldName].validate === 'function'){
                 return self.fields[fieldName].validate();
-                // // update our state.validity object 
-                // self.state.validity[fieldName] = fieldValidity;
-                // return fieldValidity;
             } else {
-                //weird result?
                 return Promise.resolve(false);;
             }
         });

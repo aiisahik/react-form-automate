@@ -20,9 +20,7 @@ const FieldCheckbox = (props) => {
                     value={true}
                 />
                 <span className="custom-control-indicator"></span>
-                {props.html && (<div className="custom-control-description mb-3">
-                    {props.html}
-                </div>)}
+                {props.html && (<div className="custom-control-description mb-3" dangerouslySetInnerHTML={{ __html: props.html}}></div>)}
                 <FieldValidationMessages
                     validations={props.validations}
                 />

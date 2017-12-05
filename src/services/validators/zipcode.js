@@ -4,7 +4,6 @@ const validateZipcode = (zipcode) => {
     return new Promise((resolve, reject) => {
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode}`)
             .then((result) => {
-                console.log("google maps api result", result);
                 const locationData = {};
                 if (result.data.results.length && result.data.results[0] && result.data.results[0]['address_components'].length) {
                     const firstResult = result.data.results[0];

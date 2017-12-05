@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field renders standard input 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    className=" form-control-label"
+    htmlFor="username"
+  >
+    Email
+  </label>
+  <input
+    className="form-control"
+    defaultValue={undefined}
+    maxLength="60"
+    name="username"
+    onBlur={undefined}
+    onChange={undefined}
+    onKeyDown={undefined}
+    placeholder={undefined}
+    required={undefined}
+    type="input"
+  />
+  <span />
+</div>
+`;
