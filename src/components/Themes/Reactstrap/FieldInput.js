@@ -21,7 +21,7 @@ const FieldInput = (props) => {
                     "is-valid": props.valid === true,
                 })}
                 onBlur={props.onBlur}
-                onChange={props.onChange}
+                onChange={(e) => props.onChange(e)}
                 onKeyDown={props.onKeyDown}
                 required={props.isRequired}
                 maxLength="60"

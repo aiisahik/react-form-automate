@@ -82,8 +82,8 @@ class AutomateField extends Component {
     }
     onChange(e, forceValidate) {
         const val = (this.props.type === 'checkbox') ?
-            (e.target.checked ? 'Y' : false) :
-            e.target.value;
+            (e.target && e.target.checked ? 'Y' : false) :
+            e.target ? e.target.value : false;
         const self = this;
         this.setState({ 'val' : val }, () => {
             self.props.onChange(self.props.fieldName, self.state.val);
